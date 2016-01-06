@@ -1,18 +1,6 @@
 var app = app || {};
 var active = active || {};
 
-// var express = require('express');
-// // var passport = require('passport');
-// // var LocalStrategy = require('passport-local').Strategy;
-// var User = require('../models/User');
-// var router = express.Router();
-
-// configure passport
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-// end configuration for passport
-
 app.loginView = Backbone.View.extend({
   el: $('#login-content'),
   initialize: function() {
