@@ -5,12 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-// declare passport
-// var passport = require('passport');
-// var LocalStrategy = require('passport-local').Strategy;
-// var FacebookStrategy = require('passport-facebook').Strategy;
-// but before the db is loaded
-
 require("./db/database");
 
 var index = require('./routes/index');
@@ -18,25 +12,7 @@ var user = require('./routes/user');
 var location = require('./routes/location');
 var search = require('./routes/search');
 
-
 var app = express();
-// // instantly enable sessions
-// app.use(require('express-session')({
-//   secret: 'something secret', //kind of like your own salt
-//   resave: false,
-//   saveUninitialized: false
-// }));
-// //
-// app.use(passport.initialize());
-// app.use(passport.session());
-// // done enabling sessions
-//
-// // configure passport
-// var User = require('./models/User');
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
-// // end configuration for passport
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -51,7 +27,7 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', user);
+app.use('/', index);
 app.use('/location', location);
 app.use('/search', search);
 

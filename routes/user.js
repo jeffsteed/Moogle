@@ -1,6 +1,14 @@
 var express = require('express');
+var model = require('../models/User');
 var router = express.Router();
-var user = require('../models/User');
+
+var buildErrorResponse = function(error) {
+  return {
+    message: error,
+    status: 500,
+    note: "This response was generated due to user error."
+  }
+};
 
 router.get('/', function(req, res, next) {
   model.find(function(err, users) {

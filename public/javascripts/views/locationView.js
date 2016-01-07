@@ -1,13 +1,12 @@
 var app = app || {};
 var active = active || {};
 
-app.ModelView = Backbone.View.extend({
+app.locationModelView = Backbone.View.extend({
   initialize: function() {
     console.log("We have instantiated our model view.");
     this.render();
   },
   render: function() {
-    // var data = this.model.attributes;
     console.log("Rendering ModelView");
     var data = this.model.attributes;
     console.log("Grabbing template");
@@ -20,7 +19,7 @@ app.ModelView = Backbone.View.extend({
   }
 });
 
-app.CollectionView = Backbone.View.extend({
+app.locationCollectionView = Backbone.View.extend({
   el: document.getElementById('location-list'),
   initialize: function() {
     console.log("collection view has been instantiated");
@@ -28,11 +27,10 @@ app.CollectionView = Backbone.View.extend({
   },
   render: function() {
     console.log("collection view render has been called");
-    // var models = this.collection.models;
     var models = this.collection.models;
     for (var model in models) {
       console.log(models[model]);
-      new app.ModelView({
+      new app.locationModelView({
         model: models[model],
         el: this.el
       });
